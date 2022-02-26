@@ -1,0 +1,121 @@
+<div>
+  <h3 class="mt-3 mb-4" style="text-align: center"><span style="background-color: #99FF00">料理新規投稿</span></h3>
+
+  <div class="mb-5" style="text-align: center">
+    <input type="radio" name="food1" value="お店の料理" id="f1" checked/>手料理
+    <span class="pl-5"><input type="radio" name="food1" value="手料理" id="f2"/>お店の料理</span>
+  </div>
+
+
+  <% if @book.errors.any? %>
+  <div id="error_explanation">
+    <h5><%= @book.errors.count %>件空欄です</h5>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </div>
+  <% end %>
+
+  <%= form_with model: @book, local:true do |f| %>
+  <table class="mx-auto">
+    <tbody id="food2">
+      <%= f.hidden_field :name, value: current_food_booker.name %>
+      <tr class="b-3">
+        <td class="px-5"><p>料理画像</p></td>
+        <td>
+          <p><%= f.attachment_field :image %></p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-5"><p>料理名</p></td>
+        <td><p><%= f.text_field :food_name, style: "width: 100%" %></p></td>
+      </tr>
+
+      <tr>
+        <td class="px-5"><p>紹介文</p></td>
+        <td><p><%= f.text_area :food_introduction, style: "width: 100%" %></p></td>
+      </tr>
+
+      <tr>
+        <td class="px-5"><p>材料（分量）</p></td>
+        <td><p><%= f.text_area :material, style: "width: 100%" %></p></td>
+      </tr>
+
+      <tr>
+        <td class="px-5"><p>調理手順</p></td>
+        <td><p><%= f.text_area :cooking, rows:'3', style: "width: 100%" %></p></td>
+      </tr>
+
+      <tr>
+        <td class="px-5"><p></p></td>
+        <td>
+          (例)</br>
+          1.ジャガイモ、ニンジンの皮をむく→2.玉ね</br>ぎ、ニンジン、ジャガイモを切る
+          など
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-5"><p></p></td>
+        <td style="width: 300px;">
+          <p>
+            <%= f.collection_check_boxes(:tag_list_ids, TagList.all, :id, :name) do |tag| %>
+              <%= tag.label do %>
+                <%= tag.check_box %>
+                <%= tag.text %>
+              <% end %>
+            <% end %>
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="px-5"><p></p></td>
+        <td><p><button class="btn btn-outline-success" type="submit">新規投稿</button></p></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+  <%= form_with model: @book, local:true do |f| %>
+  <table class="mx-auto">
+    <tbody id="food3">
+      <tr>
+        <td class="px-5"><p>料理画像</p></td>
+        <td>
+          <p><%= f.attachment_field :image %></p>
+        </td>
+      </tr>
+      <tr>
+        <td class="px-5"><p>料理名</td>
+        <td><p><%= f.text_field :food_name, style: "width: 100%" %></p></td>
+      </tr>
+      <tr>
+        <td class="px-5"><p>紹介文</td>
+        <td><p><%= f.text_area :food_introduction, style: "width: 100%" %></p></td>
+      </tr>
+      <tr>
+        <td class="px-5"><p>お店の住所</p></td>
+        <td><p><%= f.text_field :restaurant, style: "width: 100%" %></p></td>
+      </tr>
+      <tr>
+        <td class="px-5"><p></p></td>
+        <td style="width: 300px;">
+          <p>
+            <%= f.collection_check_boxes(:tag_list_ids, TagList.all, :id, :name) do |tag| %>
+              <%= tag.label do %>
+                <%= tag.check_box %>
+                <%= tag.text %>
+              <% end %>
+            <% end %>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td class="px-5"><p></p></td>
+        <td><p><button class="btn btn-outline-success" type="submit">新規投稿</button></p></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+</div>

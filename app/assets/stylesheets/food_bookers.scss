@@ -1,0 +1,22 @@
+// Place all the styles related to the food_bookers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+*{
+  margin: 0;
+  padding: 0;
+ }
+
+.profile-item{
+  text-align: center;
+  border-bottom: thin solid #DDDDDD;
+}
+
+.mybook{
+  margin: 15px;
+  text-align: right;
+}
+
+.mybook-name{
+  margin: 15px 0;
+}

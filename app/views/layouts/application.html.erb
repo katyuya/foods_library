@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <div>
+    <title>FoodsLibrary</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=Metal&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+  <% if food_booker_signed_in? %>
+    <header>
+      <div class="header-item">
+        <div class="row">
+          <div class="col-sm-3 col-md-3 col-lg-3">
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <h1 class="logo"><%= link_to 'foods library', root_path %></h1>
+          </div>
+          <div class="col-sm-3 col-md-3 col-lg-3 myprofile">
+            <p><%= link_to "マイプロフィール", food_booker_path(current_food_booker.id), class: "link-color" %></p>
+          </div>
+        </div>
+        <nav>
+          <ul class="mb-3">
+            <li><%= link_to '料理新規投稿', new_book_path, class: "link-color" %></li>
+            <li><%= link_to '料理投稿一覧', books_path, class: "link-color" %></li>
+            <li><%= link_to 'ログアウト', destroy_food_booker_session_path, method: :delete, class: "link-color" %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  <% else %>
+    <header>
+      <div class="header-item">
+        <div class="row">
+          <div class="col-sm-3 col-md-3 col-lg-3">
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <h1 class="logo"><%= link_to 'foods library', root_path %></h1>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><%= link_to '料理新規投稿', new_book_path, class: "link-color" %></li>
+            <li><%= link_to '料理投稿一覧', books_path, class: "link-color" %></li>
+            <li><%= link_to '新規登録', new_food_booker_registration_path, class: "link-color" %></li>
+            <li><%= link_to 'ログイン', new_food_booker_session_path, class: "link-color" %></li>
+          </ul>
+        </nav>
+　　　　</div>
+    </header>
+  <% end %>
+
+
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <p class="footer-text">FoodsLibrary.inc</p>
+    </footer>
+  </body>
+
+</html>

@@ -1,0 +1,2 @@
+module FoodBookersHelper
+end

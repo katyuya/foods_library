@@ -1,0 +1,121 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+ *{
+  margin: 0;
+  padding: 0;
+ }
+
+ .logo{
+  font-family: 'Calligraffitti', cursive;
+  font-family: 'Metal', cursive;
+  font-family: 'Tangerine', cursive;
+  margin-bottom: 15px;
+  padding-top: 15px;
+ }
+
+ header{
+  background-color: #663300;
+ }
+
+ .myprofile{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+ }
+
+ .link-color{
+  text-decoration: none;
+  color: #008800;
+ }
+
+ .header-item{
+  text-align: center;
+  border-bottom: thin solid #DDDDDD;
+ }
+
+ ul{
+  margin: 0 auto;
+  padding: 0;
+ }
+
+ li{
+  list-style: none;
+  display: inline-block;
+  padding: 0 15px;
+ }
+
+ .footer-text{
+  text-align: center;
+  padding-top: 15px;
+  border-top: thin solid #DDDDDD;
+ }
+
+ .title-sign{
+  background-color: #99FF00;
+ }
+
+ .title-login{
+  background-color: #00FFFF;
+ }
+
+ .main-sign{
+  text-align: center;
+ }
+
+ .main-sign-item{
+  width: 600px;
+  margin: 0 auto;
+ }
+
+ .form-item{
+  width: 300px;
+ }
+
+ .field{
+  text-align: left;
+  padding-left: 150px;
+ }
+
+
+ #food3{
+  display: none;
+ }
+
+.book-link-color{
+  text-decoration: none;
+  color: #000000;
+ }
+
+ footer{
+  background-color: #555555;
+ }
+
+ #error_explanation{
+  width: 350px;
+  margin: 0 auto;
+  border: 2px solid #FF3333;
+  margin-bottom: 20px;
+
+  h5{
+   color: #FFF;
+   background-color: #FF3399;
+  }
+ }

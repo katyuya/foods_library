@@ -1,0 +1,53 @@
+
+<div class="book-index">
+
+  <sidebar class="tag-list">
+    <p class="text-success notice"><%= notice %></p>
+    <p class="tag-title">タグ一覧</p>
+    <%= form_tag({controller:"books",action:"index"}, method: :get) do %>
+    <div class="tag-item-text">
+      <% TagList.all.each do |t| %>
+        <p><%= check_box :tag_list_ids, t.name %><%= t.name %></p>
+      <% end %>
+      <%= submit_tag 'タグ検索', class: "btn btn-outline-secondary" %>
+    <% end %>
+    </div>
+  </sidebar>
+  <div class="book-box pt-3">
+    <% @books.each do |book| %>
+    <div class="book-item">
+      <div class="tag">
+        <div class="tag-head">
+          <strong>タグ</strong></br>
+          <% book.tag_lists.each do |tag| %>
+            <li><%= tag.name %></li>
+          <% end %>
+        </div>
+      </div>
+
+      <%= link_to book_path(book.id) do %>
+      <div class="book-image"><%= attachment_image_tag book, :image, fallback: "no_image.jpg", style: "width: 440px; height: 247.5px;" %></div>
+      <section class="book-text">
+        <strong class="item-name book-link-color py-2">料理名: <%= book.food_name %></strong>
+      <% end %>
+      <%= link_to food_booker_path(book.food_booker) do %>
+        <p class="book-link-color">投稿者: <%= book.food_booker.name %></p>
+      <% end %>
+        <p><%= book.food_introduction %></p>
+      </section>
+    </div>
+    <div class="index-icon-box">
+      <div class="icon-item">
+      <%= link_to book_path(book.id) do %>
+      <p>💬<%= book.book_comments.count %></p>
+      <% end %>
+      </div>
+      <div class="icon-item" id="book_<%= book.id %>">
+        <%= render 'book', book: book %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+
+</div>

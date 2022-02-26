@@ -1,0 +1,40 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-image{
+  text-align: center;
+ }
+
+ .top-text{
+  width: 300px;
+  margin: 0 auto;
+  text-align: left;
+ }
+
+ .top-box{
+  width: 1050px;
+  margin: 0 auto;
+  display: flex;
+ }
+
+ .top-explain{
+  width: 1050px;
+  height: 350px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .top-item{
+  width: 350px;
+  height: 350px;
+  text-align: center;
+ }
+
+ .link-box{
+  width: 1050px;
+  margin: 0 auto;
+  text-align: right;
+ }
