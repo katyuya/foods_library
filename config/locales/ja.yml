@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    attributes:
+      food_booker:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認用)"
+        current_password: "現在のパスワード"
+      book:
+        image: "料理画像"
+        food_name: "料理名"
+        food_introduction: "紹介文"
+  devise:
+    registrations:
+      signed_up: "会員登録が完了しました。"
+    sessions:
+      signed_in: "ログインが完了しました。"
