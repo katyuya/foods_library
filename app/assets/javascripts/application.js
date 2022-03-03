@@ -28,10 +28,12 @@
 $(function() {
   $('[name="food1"]:radio').change( function() {
 	if($('[id=f1]').prop('checked')){
+
     //お店の料理
 	  $('#food2').css('display','block');
 	  $('#food3').css('display','none');
 	} else if ($('[id=f2]').prop('checked')) {
+
     //手料理
 	  $('#food2').css('display','none');
 	  $('#food3').css('display','block');
