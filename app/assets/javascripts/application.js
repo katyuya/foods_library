@@ -21,11 +21,8 @@
 //= require turbolinks
 //= require_tree .
 
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
+$(document).on('turbolinks:load',function(){
 
-$(function() {
   $('[name="food1"]:radio').change( function() {
 	if($('[id=f1]').prop('checked')){
 
@@ -39,4 +36,5 @@ $(function() {
 	  $('#food3').css('display','block');
     }
   });
-});
+
+})
