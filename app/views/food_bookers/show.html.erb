@@ -1,11 +1,15 @@
 <p class="text-success notice"><%= notice %></p>
 <div>
   <div class="profile-item py-4">
-    <%= attachment_image_tag @food_booker, :profile_image, fallback: "no_image.jpg", style: "width: 500px" %>
+    <%= attachment_image_tag @food_booker, :profile_image, fallback: "no_image.jpg", style: "width: 500px; height: 281.25px;" %>
     <h4><%= @food_booker.name %></h4>
     <p><%= @food_booker.introduction %></p>
     <% if @food_booker.id == current_food_booker.id %>
     <%= link_to "プロフィールの編集", edit_food_booker_path(@food_booker.id), class: "btn btn-outline-success mt-3" %>
+    <% elsif current_food_booker.following?(@food_booker) %>
+      <%= link_to "フォロー外す", food_booker_relationships_path(@food_booker.id), method: :delete, class: "btn btn-outline-danger" %>
+    <% else %>
+      <%= link_to "フォローする", food_booker_relationships_path(@food_booker.id), method: :post, class: "btn btn-outline-primary" %>
     <% end %>
   </div>
   <% @books.each do |book| %>
