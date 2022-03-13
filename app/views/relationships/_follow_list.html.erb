@@ -1,0 +1,21 @@
+<% if food_bookers.exists? %>
+  <% food_bookers.each do |food_booker| %>
+
+    <div class="follow-list">
+
+      <div style="width: 100px;">
+        <%= link_to food_booker_path(food_booker.id) do %>
+          <%= attachment_image_tag food_booker, :profile_image, fallback: "no_image.jpg", size: "100x100" %>
+        <% end %>
+      </div>
+      <div class="pl-4" style="width: 250px;">
+        <%= link_to food_booker_path(current_food_booker.id) do %>
+        <h5><%= food_booker.name %></h5>
+        <p><%= food_booker.introduction %></p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
