@@ -1,4 +1,4 @@
-<% if food_bookers.exists? %>
+<% if food_bookers.present? %>
   <% food_bookers.each do |food_booker| %>
 
     <div class="follow-list">
@@ -9,7 +9,7 @@
         <% end %>
       </div>
       <div class="pl-4" style="width: 250px;">
-        <%= link_to food_booker_path(current_food_booker.id) do %>
+        <%= link_to food_booker_path(food_booker.id) do %>
         <h5><%= food_booker.name %></h5>
         <p><%= food_booker.introduction %></p>
         <% end %>

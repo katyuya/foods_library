@@ -13,12 +13,12 @@
     <% end %>
     <div style="display: flex; justify-content: center;">
       <div>
-      <%= link_to food_booker_followings_path(current_food_booker.id) do %>
+      <%= link_to food_booker_followings_path(@food_booker.id) do %>
       <p>フォロー：<%= @food_booker.followings.count %></p>
       <% end %>
       </div>
       <div class="ml-4">
-      <%= link_to food_booker_followers_path(current_food_booker.id) do %>
+      <%= link_to food_booker_followers_path(@food_booker.id) do %>
       <p>フォロワー：<%= @food_booker.followers.count %></p>
       <% end %>
       </div>
