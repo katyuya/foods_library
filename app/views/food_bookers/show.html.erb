@@ -1,6 +1,6 @@
 <p class="text-success notice"><%= notice %></p>
 <div>
-    <div class="profile-item py-4">
+  <div class="profile-item py-4">
     <%= attachment_image_tag @food_booker, :profile_image, fallback: "no_image.jpg", style: "width: 500px; height: 281.25px;" %>
     <h4><%= @food_booker.name %></h4>
     <p><%= @food_booker.introduction %></p>
