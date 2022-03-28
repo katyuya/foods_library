@@ -1,6 +1,5 @@
-
 <div class="container">
-  <p class="text-success notice"><%= notice %></p>
+  <p class="text-success notice" style="background-color: white;"><%= notice %></p>
   <div class="row" style="justify-content: center;">
     <div class="col-sm-10 col-md-10 col-lg-10">
     <% if @book.food_booker == current_food_booker %>
@@ -64,14 +63,13 @@
   <div class="row" style="justify-content: center;">
     <% @book.book_comments.each do |book_comment| %>
     <div class="col-sm-8 col-md-8 col-lg-8 mt-3 comment-box">
-        <%= attachment_image_tag book_comment.food_booker, :profile_image, fallback: "no_image.jpg", style: "width: 100px" %>
-        <strong class="comment-name"><%= book_comment.food_booker.name %></strong></br>
-        <p class="comment-text">
-          <%= book_comment.comment %></br>
-          </br>
-          <%= book_comment.created_at.strftime('%Y年%m月%d日') %>
-        </p>
-
+      <%= attachment_image_tag book_comment.food_booker, :profile_image, fallback: "no_image.jpg", style: "width: 100px" %>
+      <strong class="comment-name"><%= book_comment.food_booker.name %></strong></br>
+      <p class="comment-text">
+        <%= book_comment.comment %></br>
+        </br>
+        <%= book_comment.created_at.strftime('%Y年%m月%d日') %>
+      </p>
     </div>
     <div class="col-sm-2 col-md-2 col-lg-2 mt-3 comment-box">
       <% if book_comment.food_booker == current_food_booker %>
