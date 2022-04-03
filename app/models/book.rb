@@ -10,4 +10,18 @@ class Book < ApplicationRecord
   validates :image, presence: true
   validates :food_name, presence: true
   validates :food_introduction, presence: true
+
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @book = Book.where("food_name LIKE?","#{word}")
+    elsif search == "forward_match"
+      @book = Book.where("food_name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @book = Book.where("food_name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @book = Book.where("food_name LIKE?","%#{word}%")
+    else
+      @book = Book.all
+    end
+  end
 end
