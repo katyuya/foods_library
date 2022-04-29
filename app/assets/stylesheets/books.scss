@@ -108,3 +108,14 @@
 .comment-text{
   padding-left: 110px;
 }
+
+.new-box{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #bdb76b;
+}
+.new-box-item{
+  width: 600px;
+  background-color: skyblue;
+}
