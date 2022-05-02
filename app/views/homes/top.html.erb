@@ -1,7 +1,7 @@
 <div class="containar">
   <div class="top-box">
     <div class="top-explain">
-      <p style="font-size: 17px;">
+      <p class="title-text" style="font-size: 17px;">
         このサイトはお店料理や手料理を投稿し、その投稿を見た</br>
         人がその店を行ったり、手料理を作って感想や評価を書い</br>
         てもらえたら嬉しいと思っています
@@ -9,6 +9,11 @@
     </div>
   </div>
   <div class="top-box">
+    <p class="title-text">
+      最新の投稿
+    </p>
+  </div>
+  <div class="top-box-item">
     <% @books.last(3).each do |book| %>
     <div class="top-item p-2">
       <%= link_to book_path(book.id) do %>
