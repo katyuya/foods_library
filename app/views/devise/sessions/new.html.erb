@@ -1,6 +1,6 @@
 <div class="main-sign">
-  <div class="main-sign-item">
-    <h3 class="mt-5"><span class="title-login">ログイン画面</span></h3>
+  <div class="main-sign-in-item">
+    <h3 class="pt-5"><span class="title-login">ログイン画面</span></h3>
 
     <%= form_with model: @food_booker, url: new_food_booker_session_path, local: true do |f| %>
 
@@ -19,6 +19,6 @@
       </div>
     <% end %>
 
-    <p style="text-align: right">新規登録がお済みでない方は<%= link_to "こちらから", new_food_booker_registration_path %></p>
+    <strong style="text-align: right padding-bottom: 15px;">新規登録がお済みでない方は<%= link_to "こちらから", new_food_booker_registration_path %></strong>
   </div>
 </div>

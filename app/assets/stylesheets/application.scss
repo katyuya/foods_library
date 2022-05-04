@@ -68,10 +68,6 @@
   border-top: thin solid #DDDDDD;
  }
 
- .title-login{
-  background-color: #00FFFF;
- }
-
  .main-sign{
   text-align: center;
   background-color: #bdb76b;
@@ -83,6 +79,11 @@
   background-color: #99FF00;
  }
 
+ .main-sign-in-item{
+  width: 600px;
+  margin: 0 auto;
+  background-color: #00FFFF;
+ }
  .form-item{
   width: 300px;
  }
