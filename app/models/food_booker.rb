@@ -35,7 +35,7 @@ class FoodBooker < ApplicationRecord
   def following?(food_booker)
     followings.include?(food_booker)
   end
-  
+
   def self.looks(search, word)
     if search == "perfect_match"
       @food_booker = FoodBooker.where("name LIKE?", "#{word}")
