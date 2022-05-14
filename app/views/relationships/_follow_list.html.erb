@@ -1,20 +1,22 @@
-<% if food_bookers.present? %>
-  <% food_bookers.each do |food_booker| %>
+<div class="profile-follow">
+  <% if food_bookers.present? %>
+    <% food_bookers.each do |food_booker| %>
 
-    <div class="follow-list">
+      <div class="follow-list">
 
-　　　<%= link_to food_booker_path(food_booker.id), style: "width: 350px; display: flex;" do %>
-      <div style="width: 100px;">
-        <%= attachment_image_tag food_booker, :profile_image, fallback: "no_image.jpg", size: "100x100" %>
+  　　　<%= link_to food_booker_path(food_booker.id), style: "width: 350px; display: flex;" do %>
+        <div style="width: 100px;">
+          <%= attachment_image_tag food_booker, :profile_image, fallback: "no_image.jpg", size: "100x100" %>
+        </div>
+        <div class="pl-4" style="width: 250px;">
+          <h5><%= food_booker.name %></h5>
+          <p><%= food_booker.introduction %></p>
+        </div>
+        <% end %>
       </div>
-      <div class="pl-4" style="width: 250px;">
-        <h5><%= food_booker.name %></h5>
-        <p><%= food_booker.introduction %></p>
-      </div>
-      <% end %>
-    </div>
 
+    <% end %>
+  <% else %>
+    <p>ユーザーはいません</p>
   <% end %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+</div>
