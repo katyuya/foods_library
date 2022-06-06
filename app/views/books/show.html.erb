@@ -1,81 +1,83 @@
-<div class="container">
-  <p class="text-success notice" style="background-color: white;"><%= notice %></p>
-  <div class="row" style="justify-content: center;">
-    <div class="col-sm-10 col-md-10 col-lg-10">
-    <% if @book.food_booker == current_food_booker %>
-      <%= link_to "投稿内容の編集", edit_book_path(@book.id), class: "btn btn-sm btn-success" %>
-      <%= link_to "投稿の削除", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger ml-4" %>
+<div class="show-color">
+  <div class="container">
+    <p class="text-success notice" style="background-color: #bdb76b;"><%= notice %></p>
+    <div class="row" style="justify-content: center;">
+      <div class="col-sm-10 col-md-10 col-lg-10">
+        <% if @book.food_booker == current_food_booker %>
+          <%= link_to "投稿内容の編集", edit_book_path(@book.id), class: "btn btn-sm btn-success" %>
+          <%= link_to "投稿の削除", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger ml-4" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row pt-3" style="justify-content: center;">
+      <div class="col-sm-6 col-md-6 col-lg-6">
+        <%= attachment_image_tag @book, :image, fallback: "no_image.jpg", style: "width: 100%;" %>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4 pl-3">
+        <strong><%= @book.food_name %></strong>
+        <%= link_to food_booker_path(@book.food_booker) do %>
+          <p><%= @book.food_booker.name %></p>
+        <% end %>
+        <p><%= @book.food_introduction %></p>
+        <% if @book.material %>
+        <p>材料（分量）</p>
+        <div class="material-text">
+          <li><%= @book.material %></li>
+        </div>
+        <% elsif @book.restaurant %>
+        <p>お店の住所</p>
+        <p><%= @book.restaurant %></p>
+        <% end %>
+      </div>
+    </div>
+    <% if @book.cooking %>
+    <div class="row" style="justify-content: center;">
+      <div class="col-sm-10 col-md-10 col-lg-10 cooking-text">
+        <p>調理手順</p>
+        <p><%= @book.cooking %></p>
+      </div>
+    </div>
     <% end %>
-    </div>
-  </div>
-
-  <div class="row mt-3" style="justify-content: center;">
-    <div class="col-sm-6 col-md-6 col-lg-6">
-      <%= attachment_image_tag @book, :image, fallback: "no_image.jpg", style: "width: 100%;" %>
-    </div>
-    <div class="col-sm-4 col-md-4 col-lg-4 pl-3">
-      <strong><%= @book.food_name %></strong>
-      <%= link_to food_booker_path(@book.food_booker) do %>
-        <p><%= @book.food_booker.name %></p>
-      <% end %>
-      <p><%= @book.food_introduction %></p>
-      <% if @book.material %>
-      <p>材料（分量）</p>
-      <div class="material-text">
-        <li><%= @book.material %></li>
+    <div class="row" style="display: flex; justify-content: center;">
+      <div class="col-sm-2 col-md-2 col-lg-2" style="text-align: right;">
+        <p class="mr-3">💬<%= @book.book_comments.count %></p>
       </div>
-      <% elsif @book.restaurant %>
-      <p>お店の住所</p>
-      <p><%= @book.restaurant %></p>
-      <% end %>
-    </div>
-  </div>
-  <% if @book.cooking %>
-  <div class="row" style="justify-content: center;">
-    <div class="col-sm-10 col-md-10 col-lg-10 cooking-text">
-      <p>調理手順</p>
-      <p><%= @book.cooking %></p>
-    </div>
-  </div>
-  <% end %>
-  <div class="row" style="display: flex; justify-content: center;">
-    <div class="col-sm-2 col-md-2 col-lg-2" style="text-align: right;">
-      <p class="mr-3">💬<%= @book.book_comments.count %></p>
-    </div>
-    <div class="col-sm-2 col-md-2 col-lg-2" style="text-align: left;">
-      <div class="icon-box" id="book_<%= @book.id %>">
-        <%= render 'book', book: @book %>
+      <div class="col-sm-2 col-md-2 col-lg-2" style="text-align: left;">
+        <div class="icon-box" id="book_<%= @book.id %>">
+          <%= render 'book', book: @book %>
+        </div>
       </div>
     </div>
-  </div>
-  <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
-  <div class="row" style="justify-content: center;">
-    <div class="col-sm-4 col-md-4 col-lg-4">
-      <%= f.hidden_field :profile_image, value: current_food_booker.profile_image %>
-      <%= f.text_area :comment, rows:'3',placeholder: "コメントはここに入力", style: "width: 100%" %>
+    <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
+    <div class="row" style="justify-content: center;">
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <%= f.hidden_field :profile_image, value: current_food_booker.profile_image %>
+        <%= f.text_area :comment, rows:'3',placeholder: "コメントはここに入力", style: "width: 100%" %>
+      </div>
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <%= f.submit "コメントする", class: "btn btn-success" %>
+      </div>
     </div>
-    <div class="col-sm-2 col-md-2 col-lg-2">
-      <%= f.submit "コメントする", class: "btn btn-success" %>
-    </div>
-  </div>
-  <% end %>
+    <% end %>
 
-  <div class="row" style="justify-content: center;">
-    <% @book.book_comments.each do |book_comment| %>
-    <div class="col-sm-8 col-md-8 col-lg-8 mt-3 comment-box">
-      <%= attachment_image_tag book_comment.food_booker, :profile_image, fallback: "no_image.jpg", style: "width: 100px" %>
-      <strong class="comment-name"><%= book_comment.food_booker.name %></strong></br>
-      <p class="comment-text">
+    <div class="row" style="justify-content: center;">
+      <% @book.book_comments.each do |book_comment| %>
+      <div class="col-sm-8 col-md-8 col-lg-8 mt-3 comment-box">
+        <%= attachment_image_tag book_comment.food_booker, :profile_image, fallback: "no_image.jpg", style: "width: 100px" %>
+        <strong class="comment-name"><%= book_comment.food_booker.name %></strong></br>
+        <p class="comment-text">
         <%= book_comment.comment %></br>
         </br>
         <%= book_comment.created_at.strftime('%Y年%m月%d日') %>
-      </p>
-    </div>
-    <div class="col-sm-2 col-md-2 col-lg-2 mt-3 comment-box">
-      <% if book_comment.food_booker == current_food_booker %>
-        <%= link_to "削除する", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-danger" %>
+        </p>
+      </div>
+      <div class="col-sm-2 col-md-2 col-lg-2 mt-3 comment-box">
+        <% if book_comment.food_booker == current_food_booker %>
+          <%= link_to "削除する", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-danger" %>
+        <% end %>
+      </div>
       <% end %>
     </div>
-    <% end %>
   </div>
 </div>

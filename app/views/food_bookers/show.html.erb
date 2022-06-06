@@ -1,6 +1,6 @@
 <strong class="text-success notice"><%= notice %></strong>
 <div>
-  <div class="profile-item py-4">
+  <div class="profile-item pt-4">
     <%= attachment_image_tag @food_booker, :profile_image, fallback: "no_image.jpg", style: "width: 500px; height: 281.25px;" %>
     <h4><%= @food_booker.name %></h4>
     <p><%= @food_booker.introduction %></p>
@@ -25,7 +25,7 @@
     </div>
   </div>
   <% @books.each do |book| %>
-  <div class="row" style="justify-content: center;">
+  <div class="book-color row" style="border-top: thin solid #DDDDDD;">
 
     <div class="col-sm-4 col-md-4 col-lg-4 mybook">
     <%= link_to book_path(book.id) do %>
@@ -41,7 +41,7 @@
       <p><%= book.food_introduction %></p>
     </div>
   </div>
-  <div class="row" style="justify-content: center;">
+  <div class="book-color row">
 
     <div class="col-sm-2 col-md-2 col-lg-2" style="text-align: center;">
       <%= link_to book_path(book.id) do %>
